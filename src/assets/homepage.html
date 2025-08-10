@@ -1,0 +1,46 @@
+<!-- assets/homepage.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Browser Home</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #222; color: #eee; text-align: center; margin-top: 100px; }
+    input[type="text"] { width: 300px; padding: 10px; border-radius: 5px; border: none; color:aliceblue; background: #333; }
+    button { padding: 10px 20px; border: none; border-radius: 5px; background: #0b74de; color: white; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to FuturePlot Browser</h1>
+
+  <form id="searchForm">
+    <input type="text" name="search" placeholder="Search something..." autocomplete="off" />
+    <button type="submit">Search</button>
+  </form>
+
+  <a href="https://www.youtube.com">
+    <img src="shortcut_favico\youtube.png" alt="YouTube" width="100" height="80" style="margin-left: -2000px; margin-top: 20px;">
+  </a>
+  <a href="https://www.chatgpt.com">
+    <img src="shortcut_favico\chatgpt.jpg" alt="YouTube" width="100" height="80" style="margin-left: -10px; margin-top: 20px;">
+  </a>
+
+
+  <script>
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // stop default submit behavior
+
+    const query = this.search.value.trim();
+    if (!query) return;
+
+    // Build our custom URL scheme for Qt to catch
+    const customUrl = 'mybrowser://search?q=' + encodeURIComponent(query);
+
+    // Change window location to trigger navigation in PyQt
+    window.location = customUrl;
+  });
+
+  </script>
+
+</body>
+</html>
